@@ -1,22 +1,22 @@
-mod signal;
-
 use std::future::Future;
 use std::pin::Pin;
 use std::sync::Arc;
 
 use anyhow::Result;
 use tokio::time::Duration;
+use webrtc::api::APIBuilder;
 use webrtc::api::interceptor_registry::register_default_interceptors;
 use webrtc::api::media_engine::MediaEngine;
-use webrtc::api::APIBuilder;
 use webrtc::data_channel::data_channel_message::DataChannelMessage;
 use webrtc::data_channel::RTCDataChannel;
 use webrtc::ice_transport::ice_server::RTCIceServer;
 use webrtc::interceptor::registry::Registry;
 use webrtc::peer_connection::configuration::RTCConfiguration;
-use webrtc::peer_connection::{math_rand_alpha, RTCPeerConnection};
 use webrtc::peer_connection::peer_connection_state::RTCPeerConnectionState;
+use webrtc::peer_connection::RTCPeerConnection;
 use webrtc::peer_connection::sdp::session_description::RTCSessionDescription;
+
+mod signal;
 
 #[tokio::main]
 async fn main() -> Result<()> {
